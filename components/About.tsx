@@ -63,13 +63,13 @@ const About: React.FC = () => {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/40 blur-xl rounded-[100%] md:hidden"></div>
 
                 {/* Floating Info Cards - Visible on Mobile Now */}
-                <div className="absolute top-[15%] -left-6 md:top-[20%] md:-left-4 z-50 ultra-glass p-2 pr-4 md:p-4 md:pr-6 rounded-xl md:rounded-2xl animate-float-delayed flex items-center gap-3 md:gap-4 backdrop-blur-2xl transition-transform hover:scale-105 duration-300 ring-1 ring-white/10">
+                <div className="absolute top-[25%] -left-6 md:top-[20%] md:-left-4 z-50 ultra-glass p-2 pr-4 md:p-4 md:pr-6 rounded-xl md:rounded-2xl animate-float-delayed flex items-center gap-3 md:gap-4 backdrop-blur-2xl transition-transform hover:scale-105 duration-300 ring-1 ring-white/10">
                     <div className="bg-brand-500/10 p-2 md:p-3 rounded-lg md:rounded-xl border border-brand-500/20 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
                         <Palette className="w-3 h-3 md:w-5 md:h-5 text-brand-400" />
                     </div>
                     <div>
                         <div className="text-[8px] md:text-[10px] text-zinc-500 font-mono tracking-widest uppercase mb-0.5 md:mb-1">Role</div>
-                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Creative Director</div>
+                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Creative Head</div>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ const About: React.FC = () => {
                     </div>
                     <div>
                         <div className="text-[8px] md:text-[10px] text-zinc-500 font-mono tracking-widest uppercase mb-0.5 md:mb-1">Expertise</div>
-                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Visual Systems</div>
+                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Versatile Graphic Designer</div>
                     </div>
                 </div>
              </div>
