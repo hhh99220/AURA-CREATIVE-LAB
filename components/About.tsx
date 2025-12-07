@@ -1,14 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Linkedin, Sparkles, Palette, Zap, AlertCircle } from 'lucide-react';
+import { Linkedin, Sparkles, Palette, Zap } from 'lucide-react';
 
 const About: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [imgSrc, setImgSrc] = useState<string>("mascot.png");
   const [imgError, setImgError] = useState<boolean>(false);
-
-  // Effect to retry loading if needed, or handle cache busting logic if we wanted to be complex.
-  // For now, we rely on the onError handler.
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -31,10 +28,10 @@ const About: React.FC = () => {
 
   const handleImageError = () => {
     if (!imgError) {
-      console.warn("Could not load mascot.png. Switching to fallback.");
+      // Silently switch to fallback without disrupting the UI
       setImgError(true);
-      // Fallback to a high-quality 3D avatar from Unsplash that matches the vibe
-      setImgSrc("https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop"); 
+      // Fallback to a stylish portrait that fits the aesthetic
+      setImgSrc("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"); 
     }
   };
 
@@ -63,22 +60,15 @@ const About: React.FC = () => {
                 
                 {/* 
                    Dynamic Image Component
-                   Tries to load 'mascot.png'. If it fails, loads a fallback and shows a warning.
+                   Attempts to load 'mascot.png' from the public folder.
+                   Silently falls back to a placeholder if missing.
                 */}
                 <img 
                   src={imgSrc}
                   onError={handleImageError}
-                  alt="Hamza Hussain Mascot" 
-                  className={`relative z-10 w-full h-full object-contain animate-float drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)] transform scale-105 ${imgError ? 'opacity-80 grayscale-[0.2]' : ''}`}
+                  alt="Hamza Hussain Creative Head" 
+                  className={`relative z-10 w-full h-full object-contain animate-float drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)] transform scale-105 transition-all duration-700 ${imgError ? 'grayscale-[0.3]' : ''}`}
                 />
-
-                {/* Error Indicator / Helper UI */}
-                {imgError && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-red-500/10 border border-red-500/30 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 z-50 animate-fade-in-up">
-                    <AlertCircle className="w-4 h-4 text-red-400" />
-                    <span className="text-xs font-mono text-red-200">mascot.png not found</span>
-                  </div>
-                )}
 
                 {/* Floating Info Cards attached to the 3D space */}
                 <div className="absolute top-24 -left-8 mac-glass p-4 pr-6 rounded-2xl animate-float-delayed flex items-center gap-4 backdrop-blur-2xl border border-white/10 shadow-2xl transition-transform hover:scale-105 duration-300">
