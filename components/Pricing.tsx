@@ -28,26 +28,26 @@ const Pricing: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="py-32 relative overflow-hidden reveal">
+    <section id="pricing" className="py-24 md:py-32 relative overflow-hidden reveal">
       <div className="container mx-auto px-6 relative z-10">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <span className="text-brand-400 font-mono text-sm tracking-widest mb-3 block opacity-80">02 — INVESTMENT</span>
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6">Transparent Pricing</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-6">Transparent Pricing</h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg">
             Choose the perfect package for your needs. No hidden fees, just clear value.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-10 md:mb-12">
           <div className="mac-glass p-1.5 rounded-full inline-flex flex-wrap justify-center gap-1 border border-white/10">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`
-                  px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 relative
+                  px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold transition-all duration-300 relative
                   ${activeCategory === cat 
                     ? 'text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]' 
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'}
@@ -64,14 +64,14 @@ const Pricing: React.FC = () => {
 
         {/* Subcategory Pills */}
         {currentCategoryData.subcategories.length > 1 && (
-          <div className="flex justify-center mb-12 animate-fade-in">
-             <div className="flex gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide">
+          <div className="flex justify-center mb-10 md:mb-12 animate-fade-in">
+             <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide max-w-full">
                 {currentCategoryData.subcategories.map((sub, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSubCategoryChange(idx)}
                     className={`
-                      px-5 py-2 rounded-full text-sm font-medium border transition-all whitespace-nowrap
+                      px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-medium border transition-all whitespace-nowrap
                       ${activeSubIndex === idx
                         ? 'bg-brand-500/10 border-brand-500/50 text-brand-200 shadow-[0_0_15px_rgba(14,165,233,0.2)]'
                         : 'bg-white/5 border-white/10 text-zinc-400 hover:border-white/30 hover:text-white'}
@@ -85,12 +85,12 @@ const Pricing: React.FC = () => {
         )}
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {currentSubcategory.tiers.map((tier, idx) => (
             <div 
               key={idx}
               className={`
-                ultra-glass rounded-[2rem] p-8 relative group transition-all duration-500 flex flex-col
+                ultra-glass rounded-[2rem] p-6 md:p-8 relative group transition-all duration-500 flex flex-col
                 ${tier.highlight 
                   ? 'border-brand-500/40 shadow-[0_0_40px_rgba(14,165,233,0.1)] md:-translate-y-4' 
                   : 'hover:-translate-y-2'}
@@ -111,9 +111,9 @@ const Pricing: React.FC = () => {
               )}
 
               <div className="mb-6 relative z-10">
-                <h3 className="text-xl font-bold text-white mb-2 pr-20">{tier.name}</h3>
+                <h3 className="text-xl font-bold text-white mb-2 pr-16 md:pr-20">{tier.name}</h3>
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-4xl font-bold text-white tracking-tight">{tier.price}</span>
+                  <span className="text-3xl md:text-4xl font-bold text-white tracking-tight">{tier.price}</span>
                   {tier.period && <span className="text-zinc-500">{tier.period}</span>}
                 </div>
                 <p className="text-sm text-brand-300 font-medium font-mono">{tier.description}</p>
@@ -145,17 +145,17 @@ const Pricing: React.FC = () => {
         </div>
         
         {/* Custom Quote Strip */}
-        <div className="mt-16 ultra-glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-             <div className="w-12 h-12 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+        <div className="mt-12 md:mt-16 ultra-glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4 text-center md:text-left">
+             <div className="hidden md:flex w-12 h-12 rounded-full bg-zinc-900 border border-white/10 items-center justify-center shrink-0 shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                 <Zap className="w-6 h-6 text-yellow-400" />
              </div>
              <div>
-               <h4 className="text-lg font-bold text-white">Need a Custom Solution?</h4>
+               <h4 className="text-lg font-bold text-white mb-1 md:mb-0">Need a Custom Solution?</h4>
                <p className="text-zinc-400 text-sm">For enterprise needs or specific requirements, let's talk custom.</p>
              </div>
           </div>
-          <button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl font-medium transition-colors border border-white/5 whitespace-nowrap">
+          <button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="w-full md:w-auto px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl font-medium transition-colors border border-white/5 whitespace-nowrap">
             Contact Sales
           </button>
         </div>

@@ -49,19 +49,19 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden reveal">
+    <section id="contact" className="py-24 md:py-32 relative overflow-hidden reveal">
       
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <div className="mac-glass rounded-[3rem] p-8 md:p-20 border border-white/5">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter">Let's Create Together</h2>
+        <div className="mac-glass rounded-[2rem] md:rounded-[3rem] p-6 md:p-20 border border-white/5">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tighter">Let's Create Together</h2>
             <p className="text-zinc-400 text-lg font-light">
               Ready to elevate your brand or stream?
             </p>
           </div>
 
-          <form className="space-y-10" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <form className="space-y-8 md:space-y-10" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
               <div className="space-y-2 group">
                 <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-brand-400 transition-colors">Name</label>
                 <input 
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
                   placeholder="Your Name"
                 />
               </div>
@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
                   placeholder="your@email.com"
                 />
               </div>
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-xl focus:outline-none focus:border-white/50 transition-all appearance-none cursor-pointer"
+                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all appearance-none cursor-pointer"
                 >
                     <option className="bg-zinc-900 text-zinc-400" value="" disabled>Select a Service...</option>
                     <option className="bg-zinc-900" value="Streamer Branding">Streamer Branding (Logo, Overlay, etc.)</option>
@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
                 onChange={handleChange}
                 rows={3}
                 required
-                className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-xl focus:outline-none focus:border-white/50 transition-all resize-none placeholder:text-zinc-700"
+                className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all resize-none placeholder:text-zinc-700"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -130,7 +130,7 @@ const Contact: React.FC = () => {
                 type="submit" 
                 disabled={formState !== 'idle'}
                 className={`
-                    w-full font-bold text-lg py-6 rounded-2xl transition-all duration-500 transform flex items-center justify-center gap-3 mt-8
+                    w-full font-bold text-lg py-5 md:py-6 rounded-2xl transition-all duration-500 transform flex items-center justify-center gap-3 mt-8
                     ${formState === 'success' 
                         ? 'bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)]' 
                         : 'bg-white text-black hover:-translate-y-1 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]'}
@@ -157,14 +157,14 @@ const Contact: React.FC = () => {
             </button>
           </form>
 
-          <div className="mt-16 pt-10 border-t border-white/5 flex flex-col items-center gap-4">
+          <div className="mt-12 md:mt-16 pt-8 md:pt-10 border-t border-white/5 flex flex-col items-center gap-4">
             <span className="text-zinc-500 text-sm flex items-center gap-2 font-mono tracking-widest uppercase">
               <MessageSquare className="w-3 h-3" />
               Direct contact available
             </span>
             <a 
               href="tel:+923052765925" 
-              className="flex items-center gap-3 text-2xl font-bold text-white hover:text-brand-400 transition-colors"
+              className="flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-brand-400 transition-colors"
             >
               <Phone className="w-6 h-6 text-brand-500" />
               +92 305 2765925

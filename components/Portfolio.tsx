@@ -33,12 +33,12 @@ const PROJECTS = [
 
 const Portfolio: React.FC = () => {
   return (
-    <section id="portfolio" className="py-32 relative reveal">
+    <section id="portfolio" className="py-24 md:py-32 relative reveal">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 border-b border-white/10 pb-8">
           <div>
             <span className="text-brand-400 font-mono text-sm tracking-widest mb-3 block opacity-80">03 — SELECTED WORK</span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter drop-shadow-xl">Case Studies</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tighter drop-shadow-xl">Case Studies</h2>
             <p className="text-zinc-400 mt-4 max-w-lg text-lg font-light">
               A curation of digital identities, immersive environments, and brand systems.
             </p>
@@ -59,7 +59,7 @@ const Portfolio: React.FC = () => {
               key={idx} 
               className={`group cursor-pointer ${idx % 2 !== 0 ? 'md:mt-32' : ''}`}
             >
-              <div className="ultra-glass p-2 rounded-[2.5rem] mb-8 transition-all duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_80px_-10px_rgba(255,255,255,0.1)]">
+              <div className="ultra-glass p-2 rounded-[2.5rem] mb-6 md:mb-8 transition-all duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_80px_-10px_rgba(255,255,255,0.1)]">
                   <div className="relative overflow-hidden rounded-[2rem] aspect-[4/3] bg-zinc-900">
                      <img 
                       src={project.image} 
@@ -69,14 +69,14 @@ const Portfolio: React.FC = () => {
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
                      
                      {/* Hover Icon Reveal */}
-                     <div className="absolute top-6 right-6 p-4 rounded-full bg-black/40 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                     <div className="absolute top-6 right-6 p-4 rounded-full bg-black/40 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 hidden md:block">
                         {project.icon}
                      </div>
                   </div>
               </div>
               <div className="flex justify-between items-end px-4">
                  <div>
-                    <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{project.title}</h3>
                     <div className="flex gap-2 text-xs font-mono text-white/60">
                       {project.category.map((cat, cIdx) => (
                         <span key={cIdx} className="px-2 py-1 bg-white/5 rounded-md border border-white/5">{cat}</span>
@@ -91,7 +91,7 @@ const Portfolio: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center md:hidden">
+        <div className="mt-12 text-center md:hidden">
            <a 
             href={PORTFOLIO_LINK}
             target="_blank"
