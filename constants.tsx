@@ -152,6 +152,70 @@ export const BRAND_SERVICES: BrandService[] = [
 // --- COMPREHENSIVE PRICING DATA ---
 
 export const PRICING_DATA = {
+  stream: {
+    label: "Stream & Gaming",
+    subcategories: [
+      {
+        title: "Character Design",
+        tiers: [
+          {
+            name: "Logo (Bust Up)",
+            price: "$40",
+            description: "Character/Face Logo",
+            features: ["Hand-drawn style", "High Resolution", "Commercial Use", "Source File"]
+          },
+          {
+            name: "Logo (Full Body)",
+            price: "$50",
+            description: "Extended Detail",
+            features: ["Full Body Art", "Hand-drawn style", "High Resolution", "Source File"]
+          }
+        ]
+      },
+      {
+        title: "VTuber Models",
+        tiers: [
+          {
+            name: "Bust Up (Rig Ready)",
+            price: "$50",
+            description: "Ready for Rigging",
+            features: ["Layered PSD", "Separated Parts", "High Res Art", "Expression Ready"]
+          },
+          {
+            name: "Full Body (Rigged)",
+            price: "$150",
+            description: "Highest Tier",
+            features: ["Full Body Art", "Fully Rigged (Live2D)", "Physics & Motion", "Ready for VTube Studio"],
+            highlight: true
+          }
+        ]
+      },
+      {
+        title: "Overlays & Emotes",
+        tiers: [
+          {
+            name: "Animated Full Pkg",
+            price: "$100",
+            description: "Complete Stream Setup",
+            features: ["4 Screens", "2 Overlays", "Webcam & Chat", "5 Animated Alerts", "Transition Stinger"],
+            highlight: true
+          },
+          {
+            name: "Still Full Pkg",
+            price: "$40",
+            description: "Static Graphics",
+            features: ["4 Screens", "2 Overlays", "Webcam & Chat", "5 Static Alerts"]
+          },
+          {
+            name: "Emotes Bundle",
+            price: "$25",
+            description: "12 Sub Badges",
+            features: ["12 Unique Designs", "3 Sizes Each", "Upload Ready"]
+          }
+        ]
+      }
+    ]
+  },
   branding: {
     label: "Logo & Branding",
     subcategories: [
@@ -338,70 +402,6 @@ export const PRICING_DATA = {
             price: "$4,200",
             description: "120 Sec Animation",
             features: ["120 Sec Video", "Complex Scenes", "High-End VFX", "4K Rendering Available"]
-          }
-        ]
-      }
-    ]
-  },
-  stream: {
-    label: "Stream & Gaming",
-    subcategories: [
-      {
-        title: "Character Design",
-        tiers: [
-          {
-            name: "Logo (Bust Up)",
-            price: "$40",
-            description: "Character/Face Logo",
-            features: ["Hand-drawn style", "High Resolution", "Commercial Use", "Source File"]
-          },
-          {
-            name: "Logo (Full Body)",
-            price: "$50",
-            description: "Extended Detail",
-            features: ["Full Body Art", "Hand-drawn style", "High Resolution", "Source File"]
-          }
-        ]
-      },
-      {
-        title: "VTuber Models",
-        tiers: [
-          {
-            name: "Bust Up (Rig Ready)",
-            price: "$50",
-            description: "Ready for Rigging",
-            features: ["Layered PSD", "Separated Parts", "High Res Art", "Expression Ready"]
-          },
-          {
-            name: "Full Body (Rigged)",
-            price: "$150",
-            description: "Highest Tier",
-            features: ["Full Body Art", "Fully Rigged (Live2D)", "Physics & Motion", "Ready for VTube Studio"],
-            highlight: true
-          }
-        ]
-      },
-      {
-        title: "Overlays & Emotes",
-        tiers: [
-          {
-            name: "Animated Full Pkg",
-            price: "$100",
-            description: "Complete Stream Setup",
-            features: ["4 Screens", "2 Overlays", "Webcam & Chat", "5 Animated Alerts", "Transition Stinger"],
-            highlight: true
-          },
-          {
-            name: "Still Full Pkg",
-            price: "$40",
-            description: "Static Graphics",
-            features: ["4 Screens", "2 Overlays", "Webcam & Chat", "5 Static Alerts"]
-          },
-          {
-            name: "Emotes Bundle",
-            price: "$25",
-            description: "12 Sub Badges",
-            features: ["12 Unique Designs", "3 Sizes Each", "Upload Ready"]
           }
         ]
       }

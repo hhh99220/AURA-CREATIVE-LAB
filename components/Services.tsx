@@ -4,10 +4,11 @@ import StreamerServices from './StreamerServices';
 import BrandServices from './BrandServices';
 
 const Services: React.FC = () => {
+  // CHANGED DEFAULT TO BRAND for Agency Focus
   const [activeTab, setActiveTab] = useState<ServiceCategory>(ServiceCategory.BRAND);
 
   return (
-    <section id="services" className="py-40 relative">
+    <section id="services" className="py-40 relative reveal">
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header Area */}
@@ -20,10 +21,10 @@ const Services: React.FC = () => {
           </div>
           
           {/* Custom Toggle - Liquid Glass Pill */}
-          <div className="mac-glass p-1.5 rounded-full inline-flex relative bg-black/40">
+          <div className="mac-glass p-1.5 rounded-full inline-flex relative bg-black/40 border border-white/10">
             {/* Sliding Background */}
             <div 
-              className={`absolute top-1.5 bottom-1.5 rounded-full bg-white shadow-lg transition-all duration-500 ease-elegant z-0`}
+              className={`absolute top-1.5 bottom-1.5 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-500 ease-elegant z-0`}
               style={{
                 left: activeTab === ServiceCategory.BRAND ? '6px' : '50%',
                 width: 'calc(50% - 9px)'

@@ -6,7 +6,7 @@ const icons = [Search, Lightbulb, PenTool, Rocket];
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-32 relative">
+    <section id="process" className="py-32 relative reveal">
       <div className="container mx-auto px-6">
          <div className="mb-16">
             <span className="text-brand-500 font-mono text-sm tracking-wider mb-2 block">04 — PROCESS</span>

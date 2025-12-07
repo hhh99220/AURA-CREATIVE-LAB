@@ -3,6 +3,7 @@ import { PRICING_DATA } from '../constants';
 import { Check, Sparkles, ArrowRight, Zap } from 'lucide-react';
 
 const Pricing: React.FC = () => {
+  // CHANGED DEFAULT TO BRANDING
   const [activeCategory, setActiveCategory] = useState<keyof typeof PRICING_DATA>('branding');
   // Initialize subcategory index for each main category to 0
   const [activeSubIndices, setActiveSubIndices] = useState<Record<string, number>>({
@@ -12,7 +13,9 @@ const Pricing: React.FC = () => {
     stream: 0
   });
 
-  const categories = Object.keys(PRICING_DATA) as Array<keyof typeof PRICING_DATA>;
+  // Explicitly defining the order to put Branding/Web first
+  const categories: (keyof typeof PRICING_DATA)[] = ['branding', 'web', 'video', 'stream'];
+  
   const currentCategoryData = PRICING_DATA[activeCategory];
   const activeSubIndex = activeSubIndices[activeCategory];
   const currentSubcategory = currentCategoryData.subcategories[activeSubIndex];
@@ -25,20 +28,20 @@ const Pricing: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="py-32 relative overflow-hidden">
+    <section id="pricing" className="py-32 relative overflow-hidden reveal">
       <div className="container mx-auto px-6 relative z-10">
         
         <div className="text-center mb-16">
-          <span className="text-brand-400 font-mono text-sm tracking-widest mb-3 block opacity-80 animate-fade-in">02 — INVESTMENT</span>
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6 animate-fade-in-up">Transparent Pricing</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg animate-fade-in-up [animation-delay:200ms]">
+          <span className="text-brand-400 font-mono text-sm tracking-widest mb-3 block opacity-80">02 — INVESTMENT</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6">Transparent Pricing</h2>
+          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
             Choose the perfect package for your needs. No hidden fees, just clear value.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center mb-12 animate-fade-in-up [animation-delay:300ms]">
-          <div className="mac-glass p-1.5 rounded-full inline-flex flex-wrap justify-center gap-1">
+        <div className="flex justify-center mb-12">
+          <div className="mac-glass p-1.5 rounded-full inline-flex flex-wrap justify-center gap-1 border border-white/10">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -61,7 +64,7 @@ const Pricing: React.FC = () => {
 
         {/* Subcategory Pills */}
         {currentCategoryData.subcategories.length > 1 && (
-          <div className="flex justify-center mb-12 animate-fade-in [animation-delay:400ms]">
+          <div className="flex justify-center mb-12 animate-fade-in">
              <div className="flex gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide">
                 {currentCategoryData.subcategories.map((sub, idx) => (
                   <button
@@ -70,7 +73,7 @@ const Pricing: React.FC = () => {
                     className={`
                       px-5 py-2 rounded-full text-sm font-medium border transition-all whitespace-nowrap
                       ${activeSubIndex === idx
-                        ? 'bg-brand-500/20 border-brand-500/50 text-brand-200 shadow-[0_0_15px_rgba(14,165,233,0.3)]'
+                        ? 'bg-brand-500/10 border-brand-500/50 text-brand-200 shadow-[0_0_15px_rgba(14,165,233,0.2)]'
                         : 'bg-white/5 border-white/10 text-zinc-400 hover:border-white/30 hover:text-white'}
                     `}
                   >
@@ -82,18 +85,18 @@ const Pricing: React.FC = () => {
         )}
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up [animation-delay:500ms]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentSubcategory.tiers.map((tier, idx) => (
             <div 
               key={idx}
               className={`
-                mac-glass rounded-[2rem] p-8 relative group transition-all duration-500 flex flex-col
+                ultra-glass rounded-[2rem] p-8 relative group transition-all duration-500 flex flex-col
                 ${tier.highlight 
-                  ? 'border-brand-500/30 shadow-[0_0_30px_rgba(14,165,233,0.15)] md:-translate-y-4' 
+                  ? 'border-brand-500/40 shadow-[0_0_40px_rgba(14,165,233,0.1)] md:-translate-y-4' 
                   : 'hover:-translate-y-2'}
               `}
             >
-              {/* Highlight Tag - Moved Inside to prevent clipping */}
+              {/* Highlight Tag */}
               {tier.highlight && (
                 <div className="absolute top-6 right-6 z-20">
                   <span className="px-3 py-1 bg-brand-500 text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg flex items-center gap-1 animate-pulse-slow">
@@ -142,9 +145,9 @@ const Pricing: React.FC = () => {
         </div>
         
         {/* Custom Quote Strip */}
-        <div className="mt-16 mac-glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 animate-fade-in [animation-delay:700ms]">
+        <div className="mt-16 ultra-glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-             <div className="w-12 h-12 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0">
+             <div className="w-12 h-12 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                 <Zap className="w-6 h-6 text-yellow-400" />
              </div>
              <div>

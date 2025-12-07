@@ -1,6 +1,6 @@
 import React from 'react';
 import { BRAND_SERVICES } from '../constants';
-import { Palette, Monitor, Video, Code, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Palette, Monitor, Video, Code, ArrowUpRight } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
   'Palette': <Palette className="w-5 h-5" />,
@@ -16,18 +16,17 @@ const BrandServices: React.FC = () => {
         <div 
           key={idx}
           className={`
-            mac-glass mac-glass-hover
+            ultra-glass
             group relative p-8 rounded-[2rem] overflow-hidden flex flex-col justify-between
             ${idx === 0 || idx === 3 ? 'lg:col-span-2' : 'lg:col-span-2'}
-            border border-white/5 hover:border-white/10
           `}
         >
           {/* Liquid Gradient Blob Background */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-brand-500/10 rounded-full blur-[80px] group-hover:bg-brand-500/20 transition-all duration-1000 group-hover:scale-150 pointer-events-none"></div>
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-brand-500/10 rounded-full blur-[80px] group-hover:bg-brand-500/20 transition-all duration-1000 group-hover:scale-150 pointer-events-none mix-blend-screen"></div>
           
           <div className="relative z-10 mb-8">
             <div className="flex justify-between items-start mb-8">
-              <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-500 relative overflow-hidden">
+              <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-500 relative overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.2)]">
                 {iconMap[service.icon]}
               </div>
               <div className="p-2.5 rounded-full bg-transparent group-hover:bg-white/10 text-zinc-600 group-hover:text-white transition-all duration-500">

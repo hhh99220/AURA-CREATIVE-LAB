@@ -1,6 +1,8 @@
 import React from 'react';
-import { Twitter, Instagram, Twitch, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { PORTFOLIO_LINK } from '../constants';
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/hamzajutt4144/";
 
 const Footer: React.FC = () => {
   return (
@@ -12,11 +14,27 @@ const Footer: React.FC = () => {
             <p className="text-zinc-500 text-sm">Elevating digital identities since 2024.</p>
           </div>
 
-          <div className="flex gap-6">
-            <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-            <a href="#" className="text-zinc-500 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-            <a href={PORTFOLIO_LINK} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-brand-500 transition-colors">
-               <span className="font-bold text-sm">Be</span>
+          <div className="flex items-center gap-8">
+            {/* Behance Link */}
+            <a 
+              href={PORTFOLIO_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-zinc-500 hover:text-[#1769ff] transition-colors group flex items-center gap-2"
+              aria-label="Behance"
+            >
+               <span className="font-black text-xl tracking-tighter group-hover:scale-110 transition-transform">Be</span>
+            </a>
+
+            {/* LinkedIn Link */}
+            <a 
+              href={LINKEDIN_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-zinc-500 hover:text-[#0077b5] transition-colors group"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
             </a>
           </div>
         </div>
