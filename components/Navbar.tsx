@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   scrollToSection: (id: string) => void;
@@ -16,6 +16,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { label: 'Services', id: 'services' },
@@ -74,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white p-2.5 rounded-full hover:bg-white/10 transition-colors mr-1"
+            className={`md:hidden text-white p-2.5 rounded-full transition-all duration-300 mr-1 relative z-[60] ${isMobileMenuOpen ? 'bg-white/10 rotate-90' : 'hover:bg-white/10'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -82,24 +91,56 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-black/80 backdrop-blur-3xl z-40 transition-all duration-700 ease-elegant md:hidden flex flex-col items-center justify-center gap-8 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-         {navLinks.map((link, idx) => (
-            <button
-              key={link.id}
-              onClick={() => handleNavClick(link.id)}
-              className="text-3xl font-bold text-white/50 hover:text-white transition-all duration-500 transform hover:scale-105"
-              style={{ transitionDelay: `${idx * 50}ms` }}
-            >
-              {link.label}
-            </button>
-          ))}
-          <button 
-            onClick={() => handleNavClick('contact')}
-            className="mt-8 px-10 py-4 bg-white text-black rounded-full text-lg font-bold shadow-[0_0_40px_rgba(255,255,255,0.15)]"
-          >
-            Start Project
-          </button>
+      {/* Mobile Menu Overlay - Liquid Glass Theme */}
+      <div 
+        className={`
+            fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center
+            transition-all duration-700 ease-elegant
+            ${isMobileMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}
+        `}
+      >
+         {/* Glass Background Layer */}
+         <div className="absolute inset-0 bg-black/40 backdrop-blur-[40px]"></div>
+         
+         {/* Liquid Blobs Animation */}
+         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className={`absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] bg-brand-500/20 rounded-full blur-[80px] mix-blend-screen animate-blob transition-opacity duration-1000 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}></div>
+            <div className={`absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-purple-500/20 rounded-full blur-[80px] mix-blend-screen animate-blob animation-delay-2000 transition-opacity duration-1000 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}></div>
+         </div>
+
+         {/* Menu Content */}
+         <div className="relative z-50 flex flex-col items-center gap-6 w-full px-8">
+             {navLinks.map((link, idx) => (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`
+                    text-4xl font-bold text-white/50 hover:text-white transition-all duration-700 ease-out transform
+                    hover:scale-110 hover:tracking-wide
+                    ${isMobileMenuOpen ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-12 opacity-0 blur-sm'}
+                  `}
+                  style={{ transitionDelay: `${100 + (idx * 100)}ms` }}
+                >
+                  {link.label}
+                </button>
+              ))}
+
+              <div 
+                className={`w-full max-w-xs mt-8 transition-all duration-1000 delay-500 ease-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              >
+                  <button 
+                    onClick={() => handleNavClick('contact')}
+                    className="w-full py-5 bg-white text-black rounded-2xl text-lg font-bold shadow-[0_0_40px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2 group active:scale-95 transition-transform"
+                  >
+                    Start Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+              </div>
+         </div>
+         
+         {/* Footer Info inside Menu */}
+         <div className={`absolute bottom-10 left-0 right-0 text-center transition-all duration-1000 delay-700 ${isMobileMenuOpen ? 'opacity-50' : 'opacity-0'}`}>
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white">Aura Creative Lab</p>
+         </div>
       </div>
     </>
   );
