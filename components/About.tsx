@@ -4,7 +4,8 @@ import { Linkedin, Sparkles, Palette, Zap } from 'lucide-react';
 const About: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  const [imgSrc, setImgSrc] = useState<string>("mascot.png");
+  // Using absolute path assuming file is in public/ folder
+  const [imgSrc, setImgSrc] = useState<string>("/mascot.png");
   const [imgError, setImgError] = useState<boolean>(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -27,10 +28,9 @@ const About: React.FC = () => {
   };
 
   const handleImageError = () => {
+    console.warn("Could not load mascot.png. Ensure the file is in the 'public' folder and named exactly 'mascot.png'.");
     if (!imgError) {
-      // Silently switch to fallback without disrupting the UI
       setImgError(true);
-      // Fallback to a stylish portrait that fits the aesthetic
       setImgSrc("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"); 
     }
   };
@@ -60,10 +60,10 @@ const About: React.FC = () => {
                 
                 {/* 
                    Dynamic Image Component
-                   Attempts to load 'mascot.png' from the public folder.
-                   Silently falls back to a placeholder if missing.
+                   Checks for /mascot.png in the public folder.
                 */}
                 <img 
+                  key={imgSrc} // Forces re-render if source changes
                   src={imgSrc}
                   onError={handleImageError}
                   alt="Hamza Hussain Creative Head" 
