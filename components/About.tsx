@@ -14,11 +14,8 @@ const About: React.FC = () => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
-    // Smoother parallax tilt
-    const rotateX = ((y - centerY) / centerY) * -3;
-    const rotateY = ((x - centerX) / centerX) * 3;
-
+    const rotateX = ((y - centerY) / centerY) * -4;
+    const rotateY = ((x - centerX) / centerX) * 4;
     setRotation({ x: rotateX, y: rotateY });
   };
 
@@ -27,110 +24,90 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-16 md:py-40 relative overflow-hidden reveal">
-      {/* Ambient Background Elements */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-brand-500/5 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
+    <section id="about" className="py-24 md:py-48 relative overflow-hidden reveal">
+      {/* Intense Ambient Glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[900px] md:h-[900px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-purple-500/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-32">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-40">
           
-          {/* 1. Mascot / Image Side - VISIBLE FIRST ON MOBILE NOW */}
           <div 
-            className="w-full lg:w-1/2 relative flex justify-center lg:justify-end perspective-1000 mb-8 lg:mb-0"
+            className="w-full lg:w-1/2 relative flex justify-center lg:justify-end perspective-1000"
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-             {/* 
-                Mobile: Adjusted max-width to be larger but contained. 
-                Added a subtle bottom gradient to anchor the mascot so it doesn't float weirdly.
-             */}
              <div 
-                className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-md lg:max-w-none aspect-[4/5] transition-transform duration-500 ease-out-expo lg:scale-[1.35] origin-center"
+                className="relative w-full max-w-[320px] sm:max-w-[400px] md:max-w-xl lg:max-w-none aspect-[4/5] transition-transform duration-700 ease-elegant lg:scale-[1.4] origin-center"
                 style={{ transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)` }}
              >
-                {/* Glow behind character */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-500/20 to-purple-500/20 rounded-full blur-[60px] md:blur-[80px] animate-pulse-slow"></div>
+                {/* Intense Multi-Color Glow */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 via-purple-500/20 to-brand-500/30 rounded-full blur-[90px] animate-pulse-slow"></div>
                 
                 <img 
                   src={MASCOT_IMAGE_URL}
                   alt="Hamza Hussain Creative Head" 
-                  className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] md:drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
+                  className="relative z-10 w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
                 />
-                
-                {/* Mobile-only anchor shadow/gradient at feet */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/40 blur-xl rounded-[100%] md:hidden"></div>
 
-                {/* Floating Info Cards - Visible on Mobile Now */}
-                <div className="absolute top-[25%] -left-6 md:top-[20%] md:-left-4 z-50 ultra-glass p-2 pr-4 md:p-4 md:pr-6 rounded-xl md:rounded-2xl animate-float-delayed flex items-center gap-3 md:gap-4 backdrop-blur-2xl transition-transform hover:scale-105 duration-300 ring-1 ring-white/10">
-                    <div className="bg-brand-500/10 p-2 md:p-3 rounded-lg md:rounded-xl border border-brand-500/20 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
-                        <Palette className="w-3 h-3 md:w-5 md:h-5 text-brand-400" />
+                {/* Vibrant Floating Info Cards */}
+                <div className="absolute top-[20%] -left-8 z-50 ultra-glass p-3 pr-6 rounded-2xl animate-float-delayed flex items-center gap-4 backdrop-blur-3xl ring-2 ring-cyan-500/20 shadow-[0_0_40px_rgba(0,210,255,0.2)]">
+                    <div className="bg-cyan-500/20 p-3 rounded-xl border border-cyan-500/40 shadow-[0_0_20px_rgba(0,210,255,0.4)]">
+                        <Palette className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                        <div className="text-[8px] md:text-[10px] text-zinc-500 font-mono tracking-widest uppercase mb-0.5 md:mb-1">Role</div>
-                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Creative Head</div>
+                        <div className="text-[10px] text-cyan-300 font-bold tracking-[0.2em] uppercase mb-1">Role</div>
+                        <div className="text-white font-black text-sm tracking-wide whitespace-nowrap">Creative Head</div>
                     </div>
                 </div>
 
-                <div className="absolute bottom-[20%] -right-6 md:bottom-[25%] md:-right-4 z-50 ultra-glass p-2 pr-4 md:p-4 md:pr-6 rounded-xl md:rounded-2xl animate-float flex items-center gap-3 md:gap-4 backdrop-blur-2xl transition-transform hover:scale-105 duration-300 ring-1 ring-white/10">
-                    <div className="bg-purple-500/10 p-2 md:p-3 rounded-lg md:rounded-xl border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-                        <Layers className="w-3 h-3 md:w-5 md:h-5 text-purple-400" />
+                <div className="absolute bottom-[20%] -right-8 z-50 ultra-glass p-3 pr-6 rounded-2xl animate-float flex items-center gap-4 backdrop-blur-3xl ring-2 ring-purple-500/20 shadow-[0_0_40px_rgba(125,0,255,0.2)]">
+                    <div className="bg-purple-500/20 p-3 rounded-xl border border-purple-500/40 shadow-[0_0_20px_rgba(125,0,255,0.4)]">
+                        <Layers className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
-                        <div className="text-[8px] md:text-[10px] text-zinc-500 font-mono tracking-widest uppercase mb-0.5 md:mb-1">Expertise</div>
-                        <div className="text-white font-bold text-xs md:text-sm tracking-wide whitespace-nowrap">Versatile Graphic Designer</div>
+                        <div className="text-[10px] text-purple-300 font-bold tracking-[0.2em] uppercase mb-1">Expertise</div>
+                        <div className="text-white font-black text-sm tracking-wide whitespace-nowrap">Visual Alchemist</div>
                     </div>
                 </div>
              </div>
           </div>
 
-          {/* 2. Content Side */}
-          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
-             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-300 text-[10px] font-mono tracking-[0.2em] mb-6 md:mb-8 shadow-[0_0_20px_rgba(14,165,233,0.1)]">
-                <Sparkles className="w-3 h-3" />
-                VISIONARY
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left mt-12 lg:mt-0">
+             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-black tracking-[0.3em] mb-8 shadow-[0_0_30px_rgba(0,210,255,0.15)]">
+                <Sparkles className="w-4 h-4 animate-pulse" />
+                VISIONARY DIRECTOR
              </div>
 
-             <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter mb-6 md:mb-8 leading-[0.9]">
+             <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-8 leading-[0.85] drop-shadow-2xl">
                Hamza<br/>Hussain
              </h2>
              
-             {/* The "Manifesto" Card */}
-             <div className="ultra-glass p-6 md:p-8 rounded-3xl border-l-2 border-l-brand-500 mb-8 md:mb-10 relative group hover:bg-white/5 transition-all duration-500 w-full">
-                <p className="text-zinc-200 text-lg md:text-xl italic leading-relaxed mb-4 md:mb-6 relative z-10 font-light">
-                  "Design isn't just about aesthetics; it's about engineering perception."
+             <div className="ultra-glass p-8 md:p-10 rounded-[2.5rem] border-l-4 border-l-cyan-500 mb-10 relative group hover:bg-cyan-500/5 transition-all duration-700 w-full shadow-2xl">
+                <p className="text-white text-xl md:text-2xl italic leading-relaxed mb-6 font-light">
+                  "Design is the <span className="text-cyan-400 font-bold">engineering of perception</span>."
                 </p>
-                <div className="flex items-center gap-4 justify-center lg:justify-start">
-                   <div className="h-px bg-white/10 w-12 lg:flex-grow"></div>
-                   <p className="text-white font-bold tracking-tight text-sm md:text-base">Crafting the intangible.</p>
+                <div className="flex items-center gap-6">
+                   <div className="h-[2px] bg-gradient-to-r from-cyan-500 to-transparent flex-grow"></div>
+                   <p className="text-zinc-400 font-bold tracking-widest text-xs uppercase">Est. MMXXIV</p>
                 </div>
              </div>
 
-             <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light max-w-lg">
-                I bridge the gap between imagination and execution. Leading a collective of digital artisans, I help brands, creators, and businesses establish a dominant visual presence. From complex brand systems to immersive web experiences.
+             <p className="text-zinc-300 leading-relaxed mb-12 text-lg md:text-xl font-light max-w-xl">
+                I bridge the absolute void between imagination and execution. Leading a collective of elite digital artisans to establish dominant visual presence for world-class brands.
              </p>
-
-             {/* Tech Stack Mini-Cloud */}
-             <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-10 md:mb-12">
-                {['Brand Strategy', 'Visual Identity', 'Web Experience', 'Motion Design', 'Creative Direction'].map((tool) => (
-                  <span key={tool} className="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 border border-white/5 rounded-lg text-[10px] md:text-xs font-mono text-zinc-500 hover:text-white hover:border-white/20 hover:bg-white/10 transition-all cursor-default">
-                    {tool}
-                  </span>
-                ))}
-             </div>
 
              <a 
                href="https://www.linkedin.com/in/hamzajutt4144/"
                target="_blank"
                rel="noopener noreferrer"
-               className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-[#0077b5] hover:bg-[#006097] text-white rounded-full font-bold shadow-[0_0_30px_rgba(0,119,181,0.3)] hover:shadow-[0_0_50px_rgba(0,119,181,0.5)] hover:-translate-y-1 transition-all duration-300 group text-sm md:text-base"
+               className="inline-flex items-center gap-4 px-10 py-5 bg-[#0077b5] hover:bg-[#00a0dc] text-white rounded-full font-black shadow-[0_0_40px_rgba(0,119,181,0.4)] hover:shadow-[0_0_60px_rgba(0,160,220,0.6)] hover:-translate-y-2 transition-all duration-500 group text-lg"
              >
-               <Linkedin className="w-5 h-5 group-hover:-rotate-12 transition-transform duration-300" />
+               <Linkedin className="w-6 h-6 group-hover:-rotate-12 transition-transform duration-500" />
                Connect on LinkedIn
              </a>
           </div>
-
         </div>
       </div>
     </section>
