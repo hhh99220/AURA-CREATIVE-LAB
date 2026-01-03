@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Phone, CheckCircle, Loader } from 'lucide-react';
+import { Mail, MessageSquare, MessageCircle, CheckCircle, Loader } from 'lucide-react';
 
 // Replace this with your preferred email if different
 const CONTACT_EMAIL = "hhh99220@gmail.com";
+const WHATSAPP_NUMBER = "923052765925";
 
 const Contact: React.FC = () => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
@@ -52,9 +53,9 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 md:py-32 relative overflow-hidden reveal">
       
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <div className="mac-glass rounded-[2rem] md:rounded-[3rem] p-6 md:p-20 border border-white/5">
+        <div className="mac-glass rounded-[2rem] md:rounded-[3rem] p-6 md:p-20 border border-white/5 shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tighter">Let's Create Together</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tighter drop-shadow-2xl">Let's Create Together</h2>
             <p className="text-zinc-400 text-lg font-light">
               Ready to elevate your brand or stream?
             </p>
@@ -63,33 +64,33 @@ const Contact: React.FC = () => {
           <form className="space-y-8 md:space-y-10" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
               <div className="space-y-2 group">
-                <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-brand-400 transition-colors">Name</label>
+                <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-cyan-400 transition-colors">Name</label>
                 <input 
                   type="text" 
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-800"
                   placeholder="Your Name"
                 />
               </div>
               <div className="space-y-2 group">
-                <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-brand-400 transition-colors">Email</label>
+                <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-cyan-400 transition-colors">Email</label>
                 <input 
                   type="email" 
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all placeholder:text-zinc-800"
                   placeholder="your@email.com"
                 />
               </div>
             </div>
 
             <div className="space-y-2 group">
-              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-brand-400 transition-colors">Service Type</label>
+              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-cyan-400 transition-colors">Service Type</label>
               <div className="relative">
                 <select 
                   name="service"
@@ -114,14 +115,14 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-2 group">
-              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-brand-400 transition-colors">Message</label>
+              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-cyan-400 transition-colors">Message</label>
               <textarea 
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows={3}
                 required
-                className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all resize-none placeholder:text-zinc-700"
+                className="w-full bg-transparent border-b border-white/10 px-1 py-4 text-white text-base md:text-xl focus:outline-none focus:border-white/50 transition-all resize-none placeholder:text-zinc-800"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -130,45 +131,48 @@ const Contact: React.FC = () => {
                 type="submit" 
                 disabled={formState !== 'idle'}
                 className={`
-                    w-full font-bold text-lg py-5 md:py-6 rounded-2xl transition-all duration-500 transform flex items-center justify-center gap-3 mt-8
+                    w-full font-black text-xl py-5 md:py-6 rounded-2xl transition-all duration-500 transform flex items-center justify-center gap-3 mt-8
                     ${formState === 'success' 
-                        ? 'bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)]' 
+                        ? 'bg-emerald-500 text-white shadow-[0_0_50px_rgba(16,185,129,0.5)]' 
                         : 'bg-white text-black hover:-translate-y-1 shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]'}
                 `}
             >
               {formState === 'idle' && (
                   <>
-                    <Mail className="w-5 h-5" />
-                    Send Message
+                    <Mail className="w-6 h-6" />
+                    Send Inquiry
                   </>
               )}
               {formState === 'sending' && (
                   <>
-                    <Loader className="w-5 h-5 animate-spin" />
-                    Opening Email...
+                    <Loader className="w-6 h-6 animate-spin" />
+                    Opening Mail...
                   </>
               )}
               {formState === 'success' && (
                   <>
-                    <CheckCircle className="w-5 h-5" />
-                    Email Client Opened
+                    <CheckCircle className="w-6 h-6" />
+                    Client Opened
                   </>
               )}
             </button>
           </form>
 
-          <div className="mt-12 md:mt-16 pt-8 md:pt-10 border-t border-white/5 flex flex-col items-center gap-4">
-            <span className="text-zinc-500 text-sm flex items-center gap-2 font-mono tracking-widest uppercase">
-              <MessageSquare className="w-3 h-3" />
-              Direct contact available
+          <div className="mt-12 md:mt-20 pt-8 md:pt-12 border-t border-white/5 flex flex-col items-center gap-6">
+            <span className="text-zinc-500 text-xs flex items-center gap-3 font-mono tracking-[0.4em] uppercase">
+              <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
+              Instant Response
             </span>
             <a 
-              href="tel:+923052765925" 
-              className="flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-brand-400 transition-colors"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="group flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white rounded-full font-black shadow-[0_15px_40px_rgba(37,211,102,0.25)] hover:shadow-[0_20px_60px_rgba(37,211,102,0.4)] hover:-translate-y-2 transition-all duration-500 text-xl md:text-2xl"
             >
-              <Phone className="w-6 h-6 text-brand-500" />
-              +92 305 2765925
+              <MessageCircle className="w-8 h-8 group-hover:scale-125 transition-transform duration-500" />
+              WhatsApp Me
             </a>
+            <p className="text-[10px] text-zinc-600 font-mono tracking-widest uppercase">+92 305 2765925</p>
           </div>
         </div>
       </div>
